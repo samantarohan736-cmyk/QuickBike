@@ -6,6 +6,11 @@ import Payment from "./pages/Payment";
 import RideTracking from "./pages/RideTracking";
 import DriverRegister from "./pages/DriverRegister";
 import Navbar from "./components/Navbar";
+import RegistrationPage from "./pages/RegistrationPage";
+import BecomeDriver from "./pages/BecomeDriver";
+import IdentityPage from "./pages/IdentityPage";
+import Veichle from "./pages/Veichle";
+import FinalPage from "./pages/FinalPage";
 
 function App() {
   return (
@@ -19,7 +24,11 @@ function App() {
           <Route path="/confirm" element={<ConfirmRide />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/tracking" element={<RideTracking />} />
-          <Route path="/driver" element={<DriverRegister />} />
+          <Route path="/driver" element={<BecomeDriver/>}/>
+          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/identity" element={<IdentityPage/>}/>
+          <Route path="/veichleInfo" element={<Veichle/>}/>
+          <Route path="/finalStep" element={<FinalPage/>}/>
         </Routes>
       </div>
 
