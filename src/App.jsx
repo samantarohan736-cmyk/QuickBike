@@ -21,12 +21,15 @@ function App() {
       <Navbar />
       <div >
         <Routes>
+
           <Route path="/" element={<Home />} />
           <Route path="/select" element={<SelectRide />} />
           <Route path="/confirm" element={<ConfirmRide />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/tracking" element={<RideTracking />} />
           <Route path="/driver" element={<DriverRegister />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/activity" element={<Activity />} />
         </Routes>
       </div>
 

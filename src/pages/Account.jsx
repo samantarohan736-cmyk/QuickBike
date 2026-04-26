@@ -27,7 +27,7 @@ const Account = () => {
   return (
     <div className="pb-24">
       {/* PROFILE HEADER */}
-      <div className="bg-gradient-to-r from-orange-400 to-orange-500 p-6 text-white">
+      <div className="bg-linear-to-r from-orange-400 to-orange-500 p-6 text-white">
         <div className="flex items-center gap-4 mb-4">
           <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-4xl shadow-lg">
             {user.avatar}
