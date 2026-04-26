@@ -1,23 +1,11 @@
 import { useNavigate , useLocation} from "react-router-dom";
 import { useState } from "react";
-import GeoLocation from "../components/GeoLocation";
 import RideCard from "../components/RideCard";
+import LocationSelector from "../components/LocationSelector"
 import { Info } from 'lucide-react';
 import { Bike, Car, CarTaxiFront } from "lucide-react";
 
 function SelectRide() {
-const location = useLocation();
-const state = location.state || {};
-
-  const [pickup, setPickup] = useState(state?.pickup || null);
-  const [drop, setDrop] = useState(state?.drop ||"No destination");
-
-  
-
-  const handleSwap = () => {
-    setPickup(drop);
-    setDrop(pickup);
-  };
 
   const navigate = useNavigate();
 
@@ -53,50 +41,9 @@ const state = location.state || {};
   return (
 
 <>
+    <LocationSelector />
 
-    <div className="p-5">
 
-      {/* LOCATION UI */}
-      <div className="bg-white p-4 rounded-xl shadow flex justify-between items-center">
-
-        <div className="space-y-3">
-
-          {/* PICKUP */}
-          <div className="flex items-start gap-3">
-            <div className="w-3 h-3 bg-orange-500 rounded-full mt-2"></div>
-            <div>
-              <p className="text-gray-400 text-xs">PICK-UP POINT</p>
-              <h2 className="font-semibold">
-                Current Location: <GeoLocation />
-              </h2>
-            </div>
-          </div>
-
-          {/* LINE */}
-          <div className="ml-1 h-6 border-l-2 border-gray-300"></div>
-
-          {/* DROP */}
-          <div className="flex items-start gap-3">
-            <div className="w-3 h-3 border-2 border-gray-500 rounded-full mt-2"></div>
-            <div>
-              <p className="text-gray-400 text-xs">DROP-OFF POINT</p>
-              <h2 className="font-semibold">{drop}</h2>
-            </div>
-          </div>
-
-        </div>
-
-        {/* SWAP BUTTON */}
-        <button
-          onClick={handleSwap}
-          className="bg-gray-200 p-3 rounded-full"
-        >
-          ↕
-        </button>
-
-      </div>
-
-    </div>
     <div className="p-5 min-h-screen bg-gray-100">
 
       {/* TITLE */}
