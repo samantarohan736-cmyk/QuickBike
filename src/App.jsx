@@ -27,9 +27,9 @@ function App() {
           <Route path="/confirm" element={<ConfirmRide />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/tracking" element={<RideTracking />} />
-          <Route path="/driver" element={<RegistrationPage />} />
+          <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/identity" element={<IdentityPage />} />
-          <Route path="/registration" element={<BecomeDriver />} />
+          <Route path="/driver" element={<BecomeDriver />} />
           <Route path="/veichleInfo" element={<Veichle />} />
 
           
