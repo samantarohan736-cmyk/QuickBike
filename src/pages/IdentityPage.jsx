@@ -34,7 +34,7 @@ const IdentityPage = () => {
         </div>
 
         {/* Title and subtitle */}
-        <h1 className="text-4xl font-[900] leading-tight text-[#1f1f1f] mb-2 max-w-lg">
+        <h1 className="text-4xl font-black leading-tight text-[#1f1f1f] mb-2 max-w-lg">
           Upload your ID card
         </h1>
         <p className="text-[#6B7280] text-lg mb-10 max-w-xl">
