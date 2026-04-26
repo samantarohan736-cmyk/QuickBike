@@ -133,9 +133,36 @@ const Home = () => {
 
       </div>
 
-      <section className="bg-orange-100"></section>
+      {/* QUICK BOOK SECTION */}
+      <div className="px-5 mx-5 mb-5">
+        <div className="bg-white rounded-3xl p-6 shadow-lg">
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <span className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">ACTIVE DEAL</span>
+              <h3 className="text-2xl font-bold text-gray-900">QuickBike Pro</h3>
+              <p className="text-sm text-gray-500 mt-1">Available nearby • 3 min away</p>
+            </div>
+            <p className="text-3xl font-bold text-orange-500">$4.50</p>
+          </div>
+          <button className="w-full bg-orange-500 text-gray-900 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition">
+            Quick Book
+          </button>
+        </div>
+      </div>
 
-      <BottomNav />
+      {/* WEEKLY STREAK SECTION */}
+      <div className="px-5 mx-5 mb-32">
+        <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-6 text-white relative overflow-hidden">
+          <div className="absolute -right-20 -top-20 w-48 h-48 bg-orange-400 rounded-full opacity-10"></div>
+          <p className="text-sm font-bold text-yellow-400 mb-2">WEEKLY STREAK</p>
+          <h3 className="text-2xl font-bold mb-4">Get 30% off your next ride!</h3>
+          <div className="relative z-10">
+            <span className="text-4xl">🔥</span>
+          </div>
+        </div>
+      </div>
+
+      <BottomNav currentPage="ride" />
 
     </>
   );

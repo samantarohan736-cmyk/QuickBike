@@ -5,6 +5,8 @@ import ConfirmRide from "./pages/ConfirmRide";
 import Payment from "./pages/Payment";
 import RideTracking from "./pages/RideTracking";
 import DriverRegister from "./pages/DriverRegister";
+import Account from "./pages/Account";
+import Activity from "./pages/Activity";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/tracking" element={<RideTracking />} />
           <Route path="/driver" element={<DriverRegister />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/activity" element={<Activity />} />
         </Routes>
       </div>
 
