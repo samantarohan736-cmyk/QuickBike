@@ -5,6 +5,8 @@ import ConfirmRide from "./pages/ConfirmRide";
 import Payment from "./pages/Payment";
 import RideTracking from "./pages/RideTracking";
 import DriverRegister from "./pages/DriverRegister";
+import Account from "./pages/Account";
+import Activity from "./pages/Activity";
 import Navbar from "./components/Navbar";
 import RegistrationPage from "./pages/RegistrationPage";
 import BecomeDriver from "./pages/BecomeDriver";
@@ -24,11 +26,7 @@ function App() {
           <Route path="/confirm" element={<ConfirmRide />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/tracking" element={<RideTracking />} />
-          <Route path="/driver" element={<BecomeDriver/>}/>
-          <Route path="/registration" element={<RegistrationPage />} />
-          <Route path="/identity" element={<IdentityPage/>}/>
-          <Route path="/veichleInfo" element={<Veichle/>}/>
-          <Route path="/finalStep" element={<FinalPage/>}/>
+          <Route path="/driver" element={<DriverRegister />} />
         </Routes>
       </div>
 
