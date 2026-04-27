@@ -1,12 +1,28 @@
 import { useEffect, useState } from "react";
 import { MapPin, ArrowUpDown } from "lucide-react";
 
-export default function LocationSelector() {
-  const [pickup, setPickup] = useState("Fetching location...");
-  const [drop, setDrop] = useState("Empire State Building, NY");
+// Helper function to format pickup location
+const formatPickup = (pickup) => {
+  if (!pickup) return "Fetching location...";
+  if (typeof pickup === "string") return pickup;
+  if (pickup.lat && pickup.lng) {
+    return `Lat: ${pickup.lat.toFixed(4)}, Lng: ${pickup.lng.toFixed(4)}`;
+  }
+  return "Fetching location...";
+};
+
+export default function LocationSelector({ pickup: propPickup, drop: propDrop }) {
+  const [pickup, setPickup] = useState(formatPickup(propPickup));
+  const [drop, setDrop] = useState(propDrop || "Empire State Building, NY");
 
   // 📍 Get user's current location
   useEffect(() => {
+    // If pickup location is passed as prop, use it
+    if (propPickup) {
+      setPickup(formatPickup(propPickup));
+      return;
+    }
+
     if (!navigator.geolocation) {
       setPickup("Geolocation not supported");
       return;
@@ -15,15 +31,13 @@ export default function LocationSelector() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-
-        // You can later replace this with reverse geocoding API
         setPickup(`Lat: ${latitude.toFixed(4)}, Lng: ${longitude.toFixed(4)}`);
       },
       () => {
         setPickup("Location permission denied");
       }
     );
-  }, []);
+  }, [propPickup]);
 
   // 🔄 Swap function
   const handleSwap = () => {
@@ -31,8 +45,15 @@ export default function LocationSelector() {
     setDrop(pickup);
   };
 
+  // Update drop location from props
+  useEffect(() => {
+    if (propDrop) {
+      setDrop(typeof propDrop === "string" ? propDrop : JSON.stringify(propDrop));
+    }
+  }, [propDrop]);
+
   return (
-    <div className="w-full max-w-full mx-auto bg-gray-100 p-4 rounded-xl flex items-center justify-between">
+    <div className="w-full max-w-full mx-auto bg-gray-100 m-4 ml-4 mr-4 p-4 rounded-xl flex items-center justify-between">
       
       {/* LEFT SECTION */}
       <div className="flex gap-3">

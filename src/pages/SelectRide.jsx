@@ -8,6 +8,7 @@ import { Bike, Car, CarTaxiFront } from "lucide-react";
 function SelectRide() {
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [selectedRide, setSelectedRide] = useState(null);
 
@@ -41,7 +42,10 @@ function SelectRide() {
   return (
 
 <>
-    <LocationSelector />
+    <LocationSelector 
+      pickup={location.state?.pickup} 
+      drop={location.state?.drop}
+    />
 
 
     <div className="p-5 min-h-screen bg-gray-100">
@@ -85,7 +89,7 @@ function SelectRide() {
       {/* CONFIRM BUTTON */}
       <button
         disabled={!selectedRide}
-        onClick={() => navigate("/confirm")}
+        onClick={() => navigate("/confirm", { state: location.state })}
         className="w-full mt-6 bg-orange-500 text-white py-4 rounded-full text-lg disabled:bg-gray-300"
       >
         Confirm Ride →

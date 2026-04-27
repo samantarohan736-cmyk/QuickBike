@@ -1,11 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../components/Button";
 import { Check } from 'lucide-react';
 import { MapPinCheckInside } from 'lucide-react';
 import { Clock, MapPin } from "lucide-react";
+import LocationSelector from "../components/LocationSelector";
 
 function ConfirmRide() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <>
@@ -97,6 +99,12 @@ function ConfirmRide() {
       </div>
 
     </div>
+
+    <LocationSelector 
+      pickup={location.state?.pickup} 
+      drop={location.state?.drop}
+      className="mt-4" 
+    />
 
 
 
