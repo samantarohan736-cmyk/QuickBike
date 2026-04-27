@@ -14,7 +14,7 @@ import {
 
 const MAP_API_KEY = ""; // Put your map API key here.
 
-function Payment() {
+function Tracking() {
   const navigate = useNavigate();
 
   return (
@@ -204,4 +204,4 @@ function NavItem({ active = false, icon, label, onClick }) {
   );
 }
 
-export default Payment;
+export default Tracking;

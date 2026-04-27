@@ -189,7 +189,7 @@ function ConfirmRide() {
             </div>
 
             <button
-              onClick={() => navigate("/payment")}
+              onClick={() => navigate("/tracking")}
               className="mt-8 w-full rounded-full bg-gradient-to-r from-orange-700 to-orange-500 py-4 text-base font-extrabold text-gray-950 shadow-xl shadow-orange-500/20 transition hover:from-orange-800 hover:to-orange-500 sm:text-lg"
             >
               Pay $24.50 with {selectedPayment === "wallet" ? "Wallet" : "Visa"}

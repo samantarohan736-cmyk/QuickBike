@@ -192,7 +192,7 @@ function SelectRide() {
 
           <button
             disabled={!selectedRide}
-            onClick={() => navigate("/confirm", { state: location.state })}
+            onClick={() => navigate("/payments", { state: location.state })}
             className="mt-6 w-full rounded-full bg-orange-500 py-4 text-lg font-bold text-white shadow-lg shadow-orange-500/25 transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:shadow-none"
           >
             Confirm Ride - {selectedRide ? `Rs. ${selectedRide.price}` : "Select a ride"}

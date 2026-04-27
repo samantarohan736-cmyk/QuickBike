@@ -1,10 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SelectRide from "./pages/SelectRide";
-import ConfirmRide from "./pages/ConfirmRide";
-import Payment from "./pages/Payment";
-import RideTracking from "./pages/RideTracking";
-import DriverRegister from "./pages/DriverRegister";
+import Payment from "./pages/Payments";
+import Tracking from "./pages/Tracking";
 import Account from "./pages/Account";
 import Activity from "./pages/Activity";
 import Navbar from "./components/Navbar";
@@ -24,9 +22,10 @@ function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/select" element={<SelectRide />} />
-          <Route path="/confirm" element={<ConfirmRide />} />
+          <Route path="/confirm" element={<Payment />} />
           <Route path="/payment" element={<Payment />} />
-          <Route path="/tracking" element={<RideTracking />} />
+          <Route path="/payments" element={<Payment />} />
+          <Route path="/tracking" element={<Tracking />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/identity" element={<IdentityPage />} />
           <Route path="/driver" element={<BecomeDriver />} />
