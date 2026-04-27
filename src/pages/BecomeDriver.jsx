@@ -20,7 +20,7 @@ const BecomeDriver = () => {
           </div>
           
           <div className="space-y-6 mb-12 z-10 relative">
-            <h1 className="text-[40px] md:text-[64px] font-[900] leading-[1.1] text-[#1f1f1f]">
+            <h1 className="text-[40px] md:text-[64px] font-black leading-[1.1] text-[#1f1f1f]">
               Become a <span className="text-[#E67E22]">QuickBike</span> Rider
             </h1>
             <p className="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-2xl">
