@@ -23,7 +23,7 @@ function Tracking() {
         data-map-key-ready={MAP_API_KEY ? "true" : "false"}
         className="mx-auto flex min-h-[calc(100vh-2rem)] w-full max-w-md flex-col overflow-hidden rounded-4xl bg-cyan-50 shadow-2xl ring-1 ring-black/10 lg:min-h-195 lg:max-w-7xl"
       >
-        <header className="flex items-center justify-between bg-cyan-100 px-5 py-4 sm:px-6 lg:px-8">
+        {/* <header className="flex items-center justify-between bg-cyan-100 px-5 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4">
             <button className="rounded-full p-2 text-gray-700 transition hover:bg-white/70">
               <Menu size={22} />
@@ -41,7 +41,7 @@ function Tracking() {
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
             <UserRound className="text-gray-700" size={24} />
           </div>
-        </header>
+        </header> */}
 
         <section className="grid flex-1 lg:grid-cols-[minmax(0,1fr)_390px]">
           <div className="relative min-h-135 overflow-hidden bg-cyan-200 sm:min-h-155 lg:min-h-0">
