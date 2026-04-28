@@ -33,7 +33,7 @@ function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <Link to="/" className="text-black hover:text-orange-600 font-bold">Home</Link>
             <Link to="/driver" className="text-black hover:text-orange-600 font-bold">Become Driver</Link>
-            <Link to="/profile" className="w-9 h-9 rounded-full bg-orange-200 flex items-center justify-center text-white font-bold">
+            <Link to="/account" className="w-9 h-9 rounded-full bg-orange-200 flex items-center justify-center text-white font-bold">
               <UserRound />
             </Link>
           </div>
@@ -48,7 +48,7 @@ function Navbar() {
         <div className="absolute right-0 top-16 mr-7 w-60 bg-white shadow-xl border border-gray-100 rounded-lg flex flex-col p-4 gap-4 z-50">
           <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link to="/driver" onClick={() => setMenuOpen(false)}>Become Driver</Link>
-          <Link to="/profile" onClick={() => setMenuOpen(false)}>Profile</Link>
+          <Link to="/account" onClick={() => setMenuOpen(false)}>Profile</Link>
         </div>
       )}
     </div>
