@@ -8,7 +8,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   const path = location.pathname || "";
-  const isDriverRelated = path.startsWith('/driver') || path === '/registration' || path === '/identity' || path === '/veichleInfo' || path === '/finalStep' || path === '/confirm'|| path === '/select';
+  const isDriverRelated = path.startsWith('/driver') || path === '/registration' || path === '/identity' || path === '/veichleInfo' || path === '/finalStep';
   const showBackButton = isDriverRelated;
 
   return (
