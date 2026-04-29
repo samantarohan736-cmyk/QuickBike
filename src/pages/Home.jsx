@@ -143,7 +143,7 @@ const Home = () => {
                 <h3 className="text-2xl font-bold text-gray-900">QuickBike Pro</h3>
                 <p className="text-sm text-gray-500 mt-1">Available nearby • 3 min away</p>
               </div>
-              <p className="text-3xl font-bold text-orange-500">$4.50</p>
+              <p className="text-3xl font-bold text-orange-500">₹374</p>
             </div>
             <button className="w-full bg-orange-500 text-gray-900 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition">
               Quick Book

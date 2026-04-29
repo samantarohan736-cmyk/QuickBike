@@ -56,7 +56,7 @@ function Tracking() {
                 <p className="text-sm text-gray-500">2.1 km to your destination</p>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-extrabold text-orange-700">$12.50</p>
+                <p className="text-2xl font-extrabold text-orange-700">₹1,038</p>
                 <p className="text-[11px] font-bold uppercase tracking-wide text-gray-500">
                   Fixed Fare
                 </p>
@@ -96,7 +96,7 @@ function Tracking() {
                   <p className="text-xs font-bold uppercase tracking-wide text-gray-400">
                     Fare
                   </p>
-                  <p className="mt-1 font-extrabold text-orange-700">$12.50</p>
+                  <p className="mt-1 font-extrabold text-orange-700">₹1,038</p>
                 </div>
               </div>
             </div>

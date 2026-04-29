@@ -17,9 +17,9 @@ function ConfirmRide() {
   const [selectedPayment, setSelectedPayment] = useState("wallet");
 
   const fareBreakdown = [
-    { label: "Base Fare", value: "$5.00" },
-    { label: "Distance (12.4 km)", value: "$16.20" },
-    { label: "Taxes & Fees", value: "$3.30" },
+    { label: "Base Fare", value: "₹415" },
+    { label: "Distance (12.4 km)", value: "₹1,345" },
+    { label: "Taxes & Fees", value: "₹274" },
   ];
 
   return (
@@ -45,9 +45,9 @@ function ConfirmRide() {
 
             <div className="mt-2 flex items-end gap-2">
               <h2 className="text-4xl font-extrabold text-gray-950 sm:text-5xl">
-                $24.50
+                ₹2,034
               </h2>
-              <span className="mb-1 text-sm font-semibold text-gray-500">USD</span>
+              <span className="mb-1 text-sm font-semibold text-gray-500">INR</span>
             </div>
 
             <div className="mt-6 space-y-3 text-sm text-gray-600">
@@ -145,7 +145,7 @@ function ConfirmRide() {
                     <span className="block font-extrabold text-gray-900">
                       QuickBike Wallet
                     </span>
-                    <span className="text-xs text-gray-500">Balance: $42.10</span>
+                    <span className="text-xs text-gray-500">Balance: ₹3,494</span>
                   </span>
                 </div>
                 {selectedPayment === "wallet" ? (
@@ -192,7 +192,7 @@ function ConfirmRide() {
               onClick={() => navigate("/tracking")}
               className="mt-8 w-full rounded-full bg-gradient-to-r from-orange-700 to-orange-500 py-4 text-base font-extrabold text-gray-950 shadow-xl shadow-orange-500/20 transition hover:from-orange-800 hover:to-orange-500 sm:text-lg"
             >
-              Pay $24.50 with {selectedPayment === "wallet" ? "Wallet" : "Visa"}
+              Pay ₹2,034 with {selectedPayment === "wallet" ? "Wallet" : "Visa"}
             </button>
 
             <p className="mt-4 text-center text-xs leading-5 text-gray-500">
