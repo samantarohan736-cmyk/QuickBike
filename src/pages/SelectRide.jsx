@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RideCard from "../components/RideCard";
+import { resolvePlace } from "../utils/location";
 import {
   Bike,
   Car,
@@ -47,14 +48,6 @@ function SelectRide() {
   const pickup = location.state?.pickup || "Current location";
   const drop = location.state?.drop || "Select destination";
 
-  const formatPlace = (place) => {
-    if (typeof place === "string") return place;
-    if (place?.lat !== undefined && place?.lng !== undefined) {
-      return `Lat: ${place.lat.toFixed(4)}, Lng: ${place.lng.toFixed(4)}`;
-    }
-    return "Current location";
-  };
-
   return (
     <main className="min-h-screen bg-slate-100 px-4 py-6 sm:px-6 lg:px-10">
       <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[0.9fr_1.1fr] xl:grid-cols-[420px_1fr]">
@@ -82,7 +75,7 @@ function SelectRide() {
                     Pick-up point
                   </p>
                   <p className="mt-1 truncate text-base font-semibold text-gray-900">
-                    {formatPlace(pickup)}
+                    <PlaceName place={pickup} fallback="Current location" />
                   </p>
                 </div>
               </div>
@@ -96,7 +89,7 @@ function SelectRide() {
                     Drop-off point
                   </p>
                   <p className="mt-1 truncate text-base font-semibold text-gray-900">
-                    {formatPlace(drop)}
+                    <PlaceName place={drop} fallback="Select destination" />
                   </p>
                 </div>
               </div>
@@ -192,15 +185,40 @@ function SelectRide() {
 
           <button
             disabled={!selectedRide}
-            onClick={() => navigate("/payments", { state: location.state })}
+            onClick={() =>
+              navigate("/payments", {
+                state: {
+                  ...(location.state || {}),
+                  selectedRide: { ...selectedRide, icon: undefined },
+                },
+              })
+            }
             className="mt-6 w-full rounded-full bg-orange-500 py-4 text-lg font-bold text-white shadow-lg shadow-orange-500/25 transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:shadow-none"
           >
-            Confirm Ride - {selectedRide ? `Rs. ${selectedRide.price}` : "Select a ride"}
+            Confirm Ride - {selectedRide ? `₹${selectedRide.price}` : "Select a ride"}
           </button>
         </section>
       </div>
     </main>
   );
+}
+
+function PlaceName({ place, fallback }) {
+  const [label, setLabel] = useState(typeof place === "string" ? place : fallback);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    resolvePlace(place, fallback).then((resolvedLabel) => {
+      if (isMounted) setLabel(resolvedLabel);
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [fallback, place]);
+
+  return label;
 }
 
 export default SelectRide;

@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { MapPin, ArrowUpDown } from "lucide-react";
+import { resolvePlace } from "../utils/location";
 
 // Helper function to format pickup location
 const formatPickup = (pickup) => {
   if (!pickup) return "Fetching location...";
   if (typeof pickup === "string") return pickup;
-  if (pickup.lat !== undefined && pickup.lng !== undefined) {
-    return `Lat: ${pickup.lat.toFixed(4)}, Lng: ${pickup.lng.toFixed(4)}`;
-  }
   return "Fetching location...";
 };
 
@@ -19,7 +17,7 @@ export default function LocationSelector({ pickup: propPickup, drop: propDrop, c
   useEffect(() => {
     // If pickup location is passed as prop, use it
     if (propPickup) {
-      setPickup(formatPickup(propPickup));
+      resolvePlace(propPickup, "Fetching location...").then(setPickup);
       return;
     }
 
@@ -31,7 +29,7 @@ export default function LocationSelector({ pickup: propPickup, drop: propDrop, c
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-        setPickup(`Lat: ${latitude.toFixed(4)}, Lng: ${longitude.toFixed(4)}`);
+        resolvePlace({ lat: latitude, lng: longitude }, "Current location").then(setPickup);
       },
       () => {
         setPickup("Location permission denied");
@@ -48,7 +46,7 @@ export default function LocationSelector({ pickup: propPickup, drop: propDrop, c
   // Update drop location from props
   useEffect(() => {
     if (propDrop) {
-      setDrop(typeof propDrop === "string" ? propDrop : JSON.stringify(propDrop));
+      resolvePlace(propDrop, "Drop-off point").then(setDrop);
     }
   }, [propDrop]);
 

@@ -1,9 +1,10 @@
+import { createElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HandCoins, ArrowRight, Clock3, ShieldCheck } from 'lucide-react';
 
-const FeatureCard = ({ icon: Icon, title, description }) => (
+const FeatureCard = ({ icon, title, description }) => (
   <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
-    <Icon className="text-[#E67E22] w-8 h-8 mb-4" />
+    {createElement(icon, { className: "text-[#E67E22] w-8 h-8 mb-4" })}
     <h3 className="font-bold text-xl mb-2">{title}</h3>
     <p className="text-gray-500">{description}</p>
   </div>

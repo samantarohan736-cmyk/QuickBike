@@ -1,7 +1,7 @@
-import { Bike } from 'lucide-react';
+import { createElement } from "react";
 
 
-function RideCard({ type, price, time, description, onClick , icon: Icon }) {
+function RideCard({ type, price, time, description, onClick, icon }) {
   return (
     <div
       onClick={onClick}
@@ -15,7 +15,7 @@ function RideCard({ type, price, time, description, onClick , icon: Icon }) {
       <div className="flex items-center gap-4">
         {/* ICON */}
         <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-xl">
-          <Icon />
+          {createElement(icon)}
         </div>
 
         {/* TEXT */}

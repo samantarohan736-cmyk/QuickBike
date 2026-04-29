@@ -9,7 +9,7 @@ const Activity = () => {
       id: 1,
       destination: "Marina Bay Sands",
       date: "Today • 2:30 PM",
-      fare: "$12.50",
+      fare: "₹12.50",
       rating: 5,
       rideType: "Bike Taxi"
     },
@@ -17,7 +17,7 @@ const Activity = () => {
       id: 2,
       destination: "Orchard Central",
       date: "Yesterday • 5:15 PM",
-      fare: "$8.75",
+      fare: "₹8.75",
       rating: 4,
       rideType: "Quick Auto"
     },
@@ -25,7 +25,7 @@ const Activity = () => {
       id: 3,
       destination: "Gardens by the Bay",
       date: "2 days ago • 10:00 AM",
-      fare: "$15.20",
+      fare: "₹15.20",
       rating: 5,
       rideType: "Mini Cab"
     },
@@ -33,7 +33,7 @@ const Activity = () => {
       id: 4,
       destination: "Singapore Flyer",
       date: "3 days ago • 7:45 PM",
-      fare: "$11.50",
+      fare: "₹11.50",
       rating: 4,
       rideType: "Bike Taxi"
     },

@@ -15,15 +15,34 @@ function ConfirmRide() {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedPayment, setSelectedPayment] = useState("wallet");
+  const selectedRide = location.state?.selectedRide;
+  
+  // Debug logging
+  console.log("Payments page loaded");
+  console.log("Full State:", location.state);
+  console.log("Selected Ride:", selectedRide);
+  
+  if (!selectedRide) {
+    console.warn("No selectedRide found in state");
+  }
+  
+  const ride = selectedRide || { type: "QuickBike", price: 120 };
+  const totalFare = Number(ride?.price) || 120;
+  const baseFare = Math.round(totalFare * 0.72);
+  const taxesAndFees = Math.round(totalFare * 0.12);
+  const distanceFare = totalFare - baseFare - taxesAndFees;
 
   const fareBreakdown = [
-    { label: "Base Fare", value: "$5.00" },
-    { label: "Distance (12.4 km)", value: "$16.20" },
-    { label: "Taxes & Fees", value: "$3.30" },
+    { label: "Base Fare", value: formatCurrency(baseFare) },
+    { label: "Distance (12.4 km)", value: formatCurrency(distanceFare) },
+    { label: "Taxes & Fees", value: formatCurrency(taxesAndFees) },
   ];
 
   return (
     <main className="min-h-screen bg-slate-100 px-4 py-6 sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-6xl">
+        <h1 className="mb-6 text-3xl font-bold text-gray-900">Payment Details</h1>
+      </div>
       <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[1fr_0.9fr]">
         <section className="space-y-5">
           <div className="rounded-3xl bg-white p-6 text-center shadow-sm ring-1 ring-black/5 sm:p-8">
@@ -34,7 +53,7 @@ function ConfirmRide() {
               Ride Completed
             </h1>
             <p className="mt-2 text-sm text-gray-600 sm:text-base">
-              Thank you for riding with QuickBike today.
+              Thank you for riding with {ride?.type || "QuickBike"} today.
             </p>
           </div>
 
@@ -45,9 +64,9 @@ function ConfirmRide() {
 
             <div className="mt-2 flex items-end gap-2">
               <h2 className="text-4xl font-extrabold text-gray-950 sm:text-5xl">
-                $24.50
+                {formatCurrency(totalFare)}
               </h2>
-              <span className="mb-1 text-sm font-semibold text-gray-500">USD</span>
+              <span className="mb-1 text-sm font-semibold text-gray-500">INR</span>
             </div>
 
             <div className="mt-6 space-y-3 text-sm text-gray-600">
@@ -107,7 +126,7 @@ function ConfirmRide() {
               <div className="min-w-0">
                 <h2 className="text-lg font-extrabold text-gray-950">Rate Marcus</h2>
                 <p className="text-sm leading-5 text-gray-500">
-                  How was your trip with QuickBike Pro?
+                  How was your trip with {ride?.type || "QuickBike Pro"}?
                 </p>
                 <div className="mt-2 flex gap-1 text-orange-700">
                   {[1, 2, 3, 4].map((star) => (
@@ -145,7 +164,7 @@ function ConfirmRide() {
                     <span className="block font-extrabold text-gray-900">
                       QuickBike Wallet
                     </span>
-                    <span className="text-xs text-gray-500">Balance: $42.10</span>
+                    <span className="text-xs text-gray-500">Balance: ?42.10</span>
                   </span>
                 </div>
                 {selectedPayment === "wallet" ? (
@@ -189,10 +208,14 @@ function ConfirmRide() {
             </div>
 
             <button
-              onClick={() => navigate("/tracking")}
+              onClick={() => {
+                // Simulate payment processing
+                alert(`Payment of ${formatCurrency(totalFare)} processed via ${selectedPayment === "wallet" ? "Wallet" : "Visa"}`);
+                navigate("/tracking", { state: location.state });
+              }}
               className="mt-8 w-full rounded-full bg-gradient-to-r from-orange-700 to-orange-500 py-4 text-base font-extrabold text-gray-950 shadow-xl shadow-orange-500/20 transition hover:from-orange-800 hover:to-orange-500 sm:text-lg"
             >
-              Pay $24.50 with {selectedPayment === "wallet" ? "Wallet" : "Visa"}
+              Pay {formatCurrency(totalFare)} with {selectedPayment === "wallet" ? "Wallet" : "Visa"}
             </button>
 
             <p className="mt-4 text-center text-xs leading-5 text-gray-500">
@@ -204,6 +227,10 @@ function ConfirmRide() {
       </div>
     </main>
   );
+}
+
+function formatCurrency(value) {
+  return `₹${value.toLocaleString("en-IN")}`;
 }
 
 export default ConfirmRide;
